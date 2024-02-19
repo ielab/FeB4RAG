@@ -1,10 +1,20 @@
 import json
+import argparse
+
+
+args = argparse.ArgumentParser(description='input args')
+args.add_argument('--mapping_file', type=str, required=True, help='Path to the mapping file')
+args.add_argument('--naive_fed_file', type=str, required=True, help='naive fed file')
+args.add_argument('--best_fed_file', type=str, required=True, help='best fed file')
+#output
+args.add_argument('--output_file', type=str, required=True, help='output file')
+args = args.parse_args()
 
 # File paths
 
-mapping_file = "fedbier/qid_mapping.tsv"
-gpt4best = "response_generated/best-fed/gpt4.jsonl"
-gpt4naive = "response_generated/naive-fed/gpt4.jsonl"
+mapping_file = args.mapping_file
+gpt4best = args.best_fed_file
+gpt4naive = args.naive_fed_file
 
 # Read mapping file
 mapping_dict = {}
@@ -41,7 +51,7 @@ for collection in mapping_dict:
         output.append(qid)
 
 # Write to output file
-with open("response_generated/sample_queries.txt", "w") as f:
+with open(args.output_file, "w") as f:
     for qid in output:
         f.write(f"{qid}\n")
 

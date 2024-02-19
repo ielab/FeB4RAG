@@ -3,13 +3,18 @@ import json
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 from tqdm import tqdm
+import argparse
 
 datasets = ["nfcorpus", "fiqa", "trec-covid", "nq", "hotpotqa", "robust04", "msmarco", "webis-touche2020"]
 
 
 
 def main():
-    dataset_folder="original_dataset"
+    args = argparse.ArgumentParser()
+    args.add_argument("--original_dataset_folder", type=str)
+    args = args.parse_args()
+
+    dataset_folder=args.original_dataset_folder
     for dataset in datasets:
         print(dataset)
         query_file = os.path.join(dataset_folder, dataset, "queries.jsonl")

@@ -3,6 +3,7 @@ import json
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 from tqdm import tqdm
+import argparse
 
 datasets = ["arguana", "scidocs", "scifact", "dbpedia-entity", "signal1m", "trec-news", "fever", "climate-fever"]
 
@@ -86,11 +87,16 @@ def load_model(api_key):
 
 
 def main():
-    api_key_path = "/scratch/project/neural_ir/dylan/LLM_FS/api_key"
-    api_key = open(api_key_path, 'r').read()
+    args = argparse.ArgumentParser()
+    args.add_argument("--original_dataset_folder", type=str)
+    args.add_argument("--api_key", type=str)
+    args = args.parse_args()
+
+
+    api_key = args.api_key
 
     model = load_model(api_key=api_key)
-    dataset_folder="original_dataset"
+    dataset_folder=args.original_dataset_folder
     for dataset in datasets:
         print(dataset)
         query_file = os.path.join(dataset_folder, dataset, "queries.jsonl")

@@ -41,7 +41,7 @@ def get_args():
     parser.add_argument("--topk", type=int, default=10, help="How many samples to extract"
                                                              "required for query_alteration model selection method.")
 
-    # parser.add_argument("--fake_data_dir", type=str, default="./logs/fake_data/", help="Path to the fake data")
+    parser.add_argument("--fake_data_dir", type=str, default="./logs/fake_data/", help="Path to the fake data")
 
     parser.add_argument("--fake_queries", action="store_true", help="if using real queries or fake queries")
     parser.add_argument("--fake_id_qrels", type=str, default="")

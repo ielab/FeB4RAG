@@ -4,6 +4,7 @@ import random
 import os
 import html
 import re
+import argparse
 st.set_page_config(layout="wide")
 
 
@@ -92,10 +93,18 @@ def load_selections(file_path="selections.jsonl"):
 
 
 def main():
+    args = argparse.ArgumentParser(description='input args')
+    args.add_argument('--naive_fed_file', type=str, required=True, help='naive fed file')
+    args.add_argument('--best_fed_file', type=str, required=True, help='best fed file')
+    args.add_argument('--rid_file', type=str, required=True, help='Path to the rid file')
+    # output
+    args.add_argument('--output_file', type=str, required=True, help='output file')
+    args = args.parse_args()
+
 
     parsed_ids = load_selections()
 
-    sample_qid_file ="response_generated/sample_queries.txt"
+    sample_qid_file ="sample_rids.txt"
     if not os.path.exists(sample_qid_file):
         print("No sample queries file found")
         return
@@ -104,7 +113,7 @@ def main():
         for line in f:
             sample_qids.append(line.strip())
 
-    best_fed_data = read_jsonl("response_generated/best-fed/gpt4.jsonl")
+    best_fed_data = read_jsonl("../response_generated/best-fed/gpt4.jsonl")
     naive_fed_data = read_jsonl("response_generated/naive-fed/gpt4.jsonl")
     #then remove from the best_fed_data the ones that are already parsed
 

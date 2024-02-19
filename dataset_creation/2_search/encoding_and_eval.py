@@ -125,16 +125,16 @@ def run_evaluation(args, models, names):
             queries, qrels = {}, {}
             # BRING THIS BACK
             #data_temp = f"{args.fake_data_dir}/{args.dataset_name}/"
-            data_temp = f"{args.fake_data_dir}/fedbeir/"
+            data_temp = f"{args.fake_data_dir}"
             #with open(os.path.join(data_temp, "{}-{}.qrels".format(args.dataset_name, args.fake_id_qrels)), 'r') as f:
-            with open(os.path.join(data_temp, "fedbeir-1.qrels"), 'r') as f:
+            with open(os.path.join(data_temp, "qrels", "original_qrel.tsv"), 'r') as f:
                 for line in f:
                     qid, _, doc_id, _ = line.split()
                     if qid not in qrels:
                         qrels[qid] = {}
                     qrels[qid][doc_id] = 1
             #with open(os.path.join(data_temp, f"{args.dataset_name}-{args.fake_id_queries}.queries.tsv"), 'r') as f:
-            with open(os.path.join(data_temp, "fedbeir-1.queries.tsv"), 'r') as f:
+            with open(os.path.join(data_temp, "queries", "requests.tsv"), 'r') as f:
                 for line in f:
                     qid, query_text = line.split("\t")
                     queries[qid] = query_text

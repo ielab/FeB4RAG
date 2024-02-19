@@ -213,7 +213,7 @@ def check_already_labeled(out_file):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Federated Search Source Selection')
     parser.add_argument('--search_folder', type=str, required=True, help='Path to the search trec file')
-    parser.add_argument('--query_file', type=str, required=True, help='Path to the query file')
+    parser.add_argument('--request_file', type=str, required=True, help='Path to the query file')
     parser.add_argument('--corpus_file', type=str, required=True, help='corpus file')
     parser.add_argument('--out_file', type=str, required=True, help='output file')
     parser.add_argument('--llm', type=str, help='llm')
@@ -225,4 +225,4 @@ if __name__ == "__main__":
     search_file = os.listdir(search_folder)[0]
     search_file = os.path.join(search_folder, search_file)
 
-    main(search_file, args.query_file, args.corpus_file, args.out_file, args.llm, args.model_path)
+    main(search_file, args.request_file, args.corpus_file, args.out_file, args.llm, args.model_path)

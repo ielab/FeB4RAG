@@ -134,7 +134,7 @@ def main():
     args = argparse.ArgumentParser(description='Calculate agreement between two judges')
     args.add_argument('--label_folder', type=str, required=True, help='Path to the judgement file')
 
-    args.add_argument('--qrel_file', type=str, required=True, help='output file')
+    args.add_argument('--qrel_file', type=str, required=True, help='qrel file')
     args.add_argument('--mapping_file', type=str, required=True, help='output file')
     args.add_argument('--llm', type=str, required=True, help='llm_name')
     args.add_argument('--llm_2', type=str, default=None, help='llm_name')

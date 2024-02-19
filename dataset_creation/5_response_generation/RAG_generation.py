@@ -96,7 +96,7 @@ def main():
     parser.add_argument('--labeling_folder', type=str, help='Path to the labeling folder (only for gold type)')
     parser.add_argument('--label_type', type=str, help='Label type (only for gold type)')
 
-    # Add arguments that are specific to the 'non-fed' type
+    # Add arguments that are specific to the 'naive-fed' type
     parser.add_argument('--search_folder', type=str, help='Path to the original dataset file (only for non-fed type)')
     parser.add_argument('--top', type=int, help='Top results (only for non-fed type)')
 
@@ -118,7 +118,7 @@ def main():
     #first load corpus and search results
 
     if llm=="gpt4":
-        api_key_path = "/scratch/project/neural_ir/dylan/LLM_FS/api_key"
+        api_key_path = "api_key"
         api_key = open(api_key_path, 'r').read()
         model = load_model(api_key)
     else:

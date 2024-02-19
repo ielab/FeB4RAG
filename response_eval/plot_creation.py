@@ -34,7 +34,7 @@ def create_plot_overall():
     #read the file
     result_count_dict = {"Coverage": {"naive-fed": 0, "best-fed": 0, "none": 0}, "Consistency": {"naive-fed": 0, "best-fed": 0, "none": 0}, "Correctness": {"naive-fed": 0, "best-fed": 0, "none": 0}, "Clarity": {"naive-fed": 0, "best-fed": 0, "none": 0}, "Final": {"naive-fed": 0, "best-fed": 0, "none": 0}}
 
-    with open("selections_1.jsonl") as f:
+    with open("selections.jsonl") as f:
         for line in f:
             current_dict = json.loads(line)
             qid = current_dict["qid"]

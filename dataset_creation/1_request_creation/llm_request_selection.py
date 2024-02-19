@@ -1,9 +1,13 @@
 import json
 import os
 from tqdm import tqdm
+import argparse
 datasets = ["arguana", "scidocs", "scifact", "dbpedia-entity", "signal1m", "trec-news", "fever", "climate-fever"]
 
-dataset_folder="original_dataset"
+args = argparse.ArgumentParser()
+args.add_argument("--original_dataset_folder", type=str)
+args = args.parse_args()
+dataset_folder=args.original_dataset_folder
 for dataset in datasets:
     print(dataset)
     input_file = os.path.join(dataset_folder, dataset, "conversational_queries.jsonl")
