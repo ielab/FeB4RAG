@@ -28,7 +28,7 @@ streamlit run app.py \
     --output_file selections.jsonl
 ```
 Running the code above will create a web interface, like below:
-![web interface](example_judge.png)
+![web interface](example_judge.jpeg)
 
 
 ### Plot creation
